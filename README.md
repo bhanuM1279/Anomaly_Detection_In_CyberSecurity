@@ -33,7 +33,65 @@ The goal of this project is to develop a machine-learning pipeline that can:
 - Detect previously unseen anomalous activity.
 - Compare supervised and unsupervised machine-learning approaches.
 - Evaluate the models using appropriate cybersecurity metrics.
+  
+# The Work-Flow:
+```
+              BETH Dataset
+                     │
+                     ▼
+              Data Loading
+                     │
+                     ▼
+              Data Inspection
+                     │
+                     ▼
+            Data Preprocessing
+                     │
+                     ▼
+            Feature Engineering
+                     │
+                     ▼
+          ┌──────────┴──────────┐
+          │                     │
+          ▼                     ▼
+   Isolation Forest             LOF
+          │                     │
+          │                     │
+          └──────────┬──────────┘
+                     ▼
+              Test Evaluation
+                     │
+                     ▼
+             Model Comparison
+                     │
+                     ▼
+              Random Forest
+           Supervised Baseline
+                     │
+                     ▼
+              Final Analysis
+```
+# Technologies Used
+Tools:   Python, Pandas,Numpy,Matplotlib,Scikit-learn,Google Colab
 
+# File tree
+
+```
+Anomaly_Detection_In_CyberSecurity/
+│
+├── BETH_Cybersecurity_Anomaly_Detection.ipynb
+├── README.md
+│
+├── data/
+│   ├── train.csv
+│   ├── validation.csv
+│   └── test.csv
+│
+└── outputs/
+    ├── model_predictions.csv
+    └── model_comparison.csv
+
+```
 ---
 
 # Dataset
@@ -45,6 +103,8 @@ The project uses the **BETH dataset**, a cybersecurity benchmark designed for an
 The dataset is divided into separate training, validation, and testing partitions.
 
 A key characteristic of the dataset is that the **training and validation partitions contain only normal observations**, while the test set contains both normal and anomalous observations.
+
+
 
 ### Dataset distribution
 
@@ -65,3 +125,10 @@ This creates an anomaly-detection scenario:
           │                     │
           ▼                     ▼
     Train + Validation         Test
+```
+
+
+    
+  
+
+
