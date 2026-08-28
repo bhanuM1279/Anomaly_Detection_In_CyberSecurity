@@ -59,6 +59,9 @@ This project aims to:
             Model Comparison
                    │
                    ▼
+             Random Forest Supervised Baseline
+                   │
+                   ▼
              Final Analysis
     
   
