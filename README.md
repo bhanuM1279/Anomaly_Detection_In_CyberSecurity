@@ -2,132 +2,64 @@
 
 ## Overview
 
-This project investigates machine-learning approaches for detecting anomalous and potentially malicious behavior in cybersecurity event logs.
+This project applies machine learning to detect anomalous and potentially malicious behavior in cybersecurity event logs using the **BETH Cybersecurity Dataset**.
 
-The project uses the **BETH Cybersecurity Dataset**, which contains system-level event information such as process activity and event types.
+The main goal is to learn patterns of normal system behavior and identify previously unseen anomalies.
 
-The main objective is:
+### Models Used
 
-> **Learn the normal behavior of a system and identify previously unseen anomalous or malicious activity.**
+- **Isolation Forest** — Unsupervised anomaly detection
+- **Local Outlier Factor (LOF)** — Unsupervised anomaly detection
+- **Random Forest** — Supervised baseline
 
-The project compares three machine-learning approaches:
-
-1. **Isolation Forest**
-2. **Local Outlier Factor (LOF)**
-3. **Random Forest — Supervised Baseline**
-
-The key finding is that the BETH dataset is designed around a **normal-only training setup**, making unsupervised anomaly-detection algorithms more appropriate than a conventional supervised classifier.
+The BETH dataset uses a **normal-only training setup**, making unsupervised anomaly-detection methods particularly suitable for this task.
 
 ---
 
-# Problem Statement
+## Problem Statement
 
-Cybersecurity systems continuously generate large volumes of system-event data.
+Cybersecurity systems generate a large number of system events, making manual identification of malicious behavior difficult.
 
-Manually inspecting these events is difficult, especially when malicious activity is rare or previously unseen.
+This project aims to:
 
-The goal of this project is to develop a machine-learning pipeline that can:
+- Learn normal system behavior.
+- Detect deviations from normal behavior.
+- Identify previously unseen anomalies.
+- Compare unsupervised anomaly detection with a supervised baseline.
+- Evaluate the models using precision, recall, F1-score, and AUROC.
 
-- Learn patterns of normal system behavior.
-- Identify observations that deviate from normal behavior.
-- Detect previously unseen anomalous activity.
-- Compare supervised and unsupervised machine-learning approaches.
-- Evaluate the models using appropriate cybersecurity metrics.
-  
-# The Work-Flow:
-```
-              BETH Dataset
-                     │
-                     ▼
-              Data Loading
-                     │
-                     ▼
-              Data Inspection
-                     │
-                     ▼
-            Data Preprocessing
-                     │
-                     ▼
-            Feature Engineering
-                     │
-                     ▼
-          ┌──────────┴──────────┐
-          │                     │
-          ▼                     ▼
-   Isolation Forest             LOF
-          │                     │
-          │                     │
-          └──────────┬──────────┘
-                     ▼
-              Test Evaluation
-                     │
-                     ▼
-             Model Comparison
-                     │
-                     ▼
-              Random Forest
-           Supervised Baseline
-                     │
-                     ▼
-              Final Analysis
-```
-# Technologies Used
-Tools:   Python, Pandas,Numpy,Matplotlib,Scikit-learn,Google Colab
-
-# File tree
-
-```
-Anomaly_Detection_In_CyberSecurity/
-│
-├── BETH_Cybersecurity_Anomaly_Detection.ipynb
-├── README.md
-│
-├── data/
-│   ├── train.csv
-│   ├── validation.csv
-│   └── test.csv
-│
-└── outputs/
-    ├── model_predictions.csv
-    └── model_comparison.csv
-
-```
 ---
 
-# Dataset
-
-## BETH Cybersecurity Dataset
-
-The project uses the **BETH dataset**, a cybersecurity benchmark designed for anomaly detection.
-
-The dataset is divided into separate training, validation, and testing partitions.
-
-A key characteristic of the dataset is that the **training and validation partitions contain only normal observations**, while the test set contains both normal and anomalous observations.
-
-
-
-### Dataset distribution
-
-| Split | Normal | Anomaly |
-|---|---:|---:|
-| Training | 763,144 | 0 |
-| Validation | 188,967 | 0 |
-| Testing | 30,535 | 158,432 |
-
-This creates an anomaly-detection scenario:
+## Workflow
 
 ```text
-                BETH Dataset
-                     │
-          ┌──────────┴──────────┐
-          │                     │
-       Normal                Anomaly
-          │                     │
-          ▼                     ▼
-    Train + Validation         Test
-```
-
-
+              BETH Dataset
+                   │
+                   ▼
+              Data Loading
+                   │
+                   ▼
+             Data Inspection
+                   │
+                   ▼
+           Data Preprocessing
+                   │
+                   ▼
+          Feature Engineering
+                   │
+          ┌────────┴────────┐
+          ▼                 ▼
+   Isolation Forest         LOF
+          │                 │
+          └────────┬────────┘
+                   ▼
+             Test Evaluation
+                   │
+                   ▼
+            Model Comparison
+                   │
+                   ▼
+             Final Analysis
     
   
 
